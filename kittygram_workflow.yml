@@ -123,14 +123,16 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          envs: |
+          script: |
+            cd ~/kittygram
+            cat > .env <<ENVEOF
             POSTGRES_DB=${{ secrets.POSTGRES_DB }}
             POSTGRES_USER=${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
             DB_HOST=${{ secrets.DB_HOST }}
             DB_PORT=${{ secrets.DB_PORT }}
-          script: |
-            cd ~/kittygram
+            ENVEOF
+            export $(grep -v '^#' .env | xargs)
             docker-compose -f docker-compose.production.yml pull
             docker-compose -f docker-compose.production.yml up -d
             docker-compose -f docker-compose.production.yml exec -T backend python manage.py migrate
