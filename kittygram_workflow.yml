@@ -114,7 +114,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "docker-compose.prod.yml"
+          source: "docker-compose.production.yml"
           target: "~/kittygram/"
 
       - name: Deploy to server
@@ -131,10 +131,10 @@ jobs:
             DB_PORT=${{ secrets.DB_PORT }}
           script: |
             cd ~/kittygram
-            docker-compose -f docker-compose.prod.yml pull
-            docker-compose -f docker-compose.prod.yml up -d
-            docker-compose -f docker-compose.prod.yml exec -T backend python manage.py migrate
-            docker-compose -f docker-compose.prod.yml exec -T backend python manage.py collectstatic --noinput
+            docker-compose -f docker-compose.production.yml pull
+            docker-compose -f docker-compose.production.yml up -d
+            docker-compose -f docker-compose.production.yml exec -T backend python manage.py migrate
+            docker-compose -f docker-compose.production.yml exec -T backend python manage.py collectstatic --noinput
 
       - name: Send Telegram notification
         if: success()
