@@ -17,5 +17,5 @@ COPY . .
 # Открываем порт 8000 для доступа к приложению
 EXPOSE 8000
 
-# Собираем статические файлы и запускаем приложение
-CMD python manage.py collectstatic --noinput && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+# Запускаем приложение
+CMD gunicorn --bind 0.0.0.0:8000 kittygram_backend.wsgi
