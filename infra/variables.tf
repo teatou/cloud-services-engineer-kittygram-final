@@ -76,9 +76,3 @@ variable "image_family" {
   type    = string
   default = "ubuntu-2404-lts-oslogin"
 }
-
-variable "bucket_name" {
-  description = "S3 bucket name for Terraform state"
-  type        = string
-  default     = "kittygram-tf-state-titov"
-}
