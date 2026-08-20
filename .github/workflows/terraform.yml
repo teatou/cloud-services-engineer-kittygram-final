@@ -15,6 +15,7 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    environment: prod
     env:
       TF_VAR_cloud_id: ${{ secrets.YC_CLOUD_ID }}
       TF_VAR_folder_id: ${{ secrets.YC_FOLDER_ID }}
