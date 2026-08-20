@@ -13,7 +13,7 @@ kittygram_domain: полная ссылка (http://<ip-адрес вашей В
 dockerhub_username: ваш_логин_на_докерхабе
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+Скопируйте содержимое файла `.github/workflows/deploy.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
 
 Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
 
