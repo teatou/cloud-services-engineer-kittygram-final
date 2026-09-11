@@ -15,6 +15,14 @@ resource "yandex_vpc_subnet" "infra_subnet" {
   network_id     = yandex_vpc_network.infra_network.id
 }
 
+resource "yandex_vpc_address" "vm_1_ip" {
+  name = "${var.vm_1_name}-ip"
+
+  external_ipv4_address {
+    zone_id = var.zone
+  }
+}
+
 resource "yandex_vpc_security_group" "infra_sg" {
   name       = "${var.vpc_name}-sg"
   network_id = yandex_vpc_network.infra_network.id
